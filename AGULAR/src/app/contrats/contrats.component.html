@@ -1,0 +1,30 @@
+<h4 class="display-5 text-center">Liste des contrats</h4><hr>
+<table class="table table-hover">
+  <thead class="thead-light">
+    <th>ID</th>
+    <th>Client</th>
+    <th>Client-final-ID</th>
+    <th>Description</th>
+    <th>PU</th>
+    <th>D.Début </th>
+    <th>D.Fin</th>   
+<th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of service.list">
+      <th (click)="populateForm(i)">{{i.contrat_id}} </th>
+      <td (click)="populateForm(i)">{{i.client_nom}} </td>
+      <td (click)="populateForm(i)" *ngIf="i.final_client_id == null">------</td>
+     <td (click)="populateForm(i)" *ngIf="i.final_client_id != null" >{{i.final_client_id}} </td>
+      <td (click)="populateForm(i)">{{i.description}} </td>
+     <td (click)="populateForm(i)">{{i.prix_unitaire}} </td>
+     
+      <td (click)="populateForm(i)">{{i.date_debut | date: 'dd/MM/yyyy'}} </td>
+      <td (click)="populateForm(i)">{{i.date_fin | date: 'dd/MM/yyyy'}} </td>
+    
+      <td>
+        <a class="btn text-danger" (click)="onDeleteContrat(i.contrat_id)"><i class="fa fa-trash fa-lg"></i></a>
+    </td>
+    </tr>
+  </tbody>
+</table>
